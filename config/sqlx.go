@@ -5,10 +5,6 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-func GetReaderSqlx() *sqlx.DB {
-	return sqlx.MustConnect("mysql", DB_CONNECTION)
-}
-
-func GetWriterSqlx() *sqlx.DB {
+func GetSqlx() *sqlx.DB {
 	return sqlx.MustConnect("mysql", DB_CONNECTION)
 }
