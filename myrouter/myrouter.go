@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"regexp"
 )
@@ -62,6 +63,12 @@ func (rtr *Router) Route(method, path string, middlewares []Middleware, handlerF
 
 //ServerHTTP is a function that returns the handler for the router
 func (rtr *Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Println("ERROR:", r) // Log the error
+			http.Error(w, "{\"message\": Internal Server Error }", http.StatusInternalServerError)
+		}
+	}()
 	for _, e := range rtr.routes {
 		params := e.Match(r)
 		if params == nil {

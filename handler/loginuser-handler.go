@@ -28,16 +28,16 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 	token, errC := controller.LoginUser(r.Context(), data.Email, data.Password)
 
 	if errC != nil {
-		if errC.Code == errors.ECONFLICT {
-			status = errors.ErrorResponse["invalidFields"].Status
-			response = []byte(errors.ErrorResponse["invalidFields"].Message)
+		if errC.Code != errors.ECONFLICT {
+			fmt.Println("error")
+			errorReturn(w, r, 500, errC.Error())
 		}
-		errorReturn(w, r, 500, errC.Error())
+		status = errors.ErrorResponse["invalidFields"].Status
+		response = []byte("{\"message\":\"" + errors.ErrorResponse["invalidFields"].Message + "\"}")
+	} else {
+		status = 200
+		response = token
 	}
-	fmt.Println(token)
-	status = 200
-	response = token
-	fmt.Println(response)
 	w.WriteHeader(status)
 	w.Header().Set("Content-Type", "application/json")
 	_, err = w.Write(response)

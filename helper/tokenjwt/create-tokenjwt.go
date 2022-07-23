@@ -14,7 +14,7 @@ func CreateToken(displayName string, email string, image string) (string, *error
 	claims["displayName"] = displayName
 	claims["email"] = email
 	claims["image"] = image
-	claims["exp"] = time.Now().Add(time.Hour * 24).Unix()
+	claims["exp"] = time.Now().Add(time.Minute * config.TOKEN_TIME).Unix()
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 

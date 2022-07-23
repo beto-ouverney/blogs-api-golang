@@ -32,14 +32,15 @@ func AddUser(w http.ResponseWriter, r *http.Request) {
 	newUser, errC := controller.AddUser(r.Context(), data.DisplayName, data.Email, data.Password, data.Image)
 
 	if errC != nil {
-		if errC.Code == errors.ECONFLICT {
-			status = errors.ErrorResponse["invalidFields"].Status
-			response = []byte(errors.ErrorResponse["invalidFields"].Message)
+		if errC.Code != errors.ECONFLICT {
+			errorReturn(w, r, 500, errC.Error())
 		}
-		errorReturn(w, r, 500, errC.Error())
+		status = errors.ErrorResponse["userAlreadyExists"].Status
+		response = []byte("{\"message\":\"" + errors.ErrorResponse["userAlreadyExists"].Message + "\"}")
+	} else {
+		status = 201
+		response = newUser
 	}
-	status = 201
-	response = newUser
 	w.WriteHeader(status)
 	w.Header().Set("Content-Type", "application/json")
 	_, err = w.Write(response)
