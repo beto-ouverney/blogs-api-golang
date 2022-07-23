@@ -5,7 +5,7 @@ import "fmt"
 // Application error codes.
 const (
 	ECONFLICT  = "conflict"  // action cannot be performed - Example: duplicate email
-	EINTERNAL  = "internal"  // internal error - Example: internal errors, referring to the language itself or to the server where the code runs. Example: save a file, marshal a json	EINVALID   = "invalid"
+	EINTERNAL  = "internal"  // internal error - Example: internal errors, referring to the language itself or to the server where the code runs. Example: save a file, marshal a json
 	EINVALID   = "invalid"   // validation failed - Logic errors created by us. Example: saving a user to the database
 	ENOTFOUND  = "not_found" // entity does not exist - Logic errors created by us. Example: saving a user to the database
 	EFORBIDDEN = "forbidden" //operation forbidden

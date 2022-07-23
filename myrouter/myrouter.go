@@ -76,7 +76,6 @@ func (rtr *Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			buf, _ := ioutil.ReadAll(r.Body)
 			bodyCopy1 := ioutil.NopCloser(bytes.NewBuffer(buf))
 			bodyCopy2 := ioutil.NopCloser(bytes.NewBuffer(buf))
-
 			r.Body = bodyCopy1 // OK since bodyCopy1 implements the io.ReadCloser interface
 			body = json.NewDecoder(bodyCopy2)
 		}

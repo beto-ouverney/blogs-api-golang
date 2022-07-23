@@ -2,30 +2,34 @@ package handler
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/beto-ouverney/blogs-api-golang/controller/usercontroller"
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func LoginUser(w http.ResponseWriter, r *http.Request) {
+func AddUser(w http.ResponseWriter, r *http.Request) {
+
 	status := 500
 	response := []byte("{\"message\":\"Error\"}")
 
 	decoder := json.NewDecoder(r.Body)
+
 	data := struct {
-		Email    string `json:"email"`
-		Password string `json:"password"`
+		Email       string `json:"email"`
+		Password    string `json:"password"`
+		DisplayName string `json:"displayName"`
+		Image       string `json:"image"`
 	}{}
+
 	err := decoder.Decode(&data)
 	if err != nil {
 		errorReturn(w, r, 500, err.Error())
 	}
-
 	defer r.Body.Close()
 	controller := usercontroller.New()
-	token, errC := controller.LoginUser(r.Context(), data.Email, data.Password)
+
+	newUser, errC := controller.AddUser(r.Context(), data.DisplayName, data.Email, data.Password, data.Image)
 
 	if errC != nil {
 		if errC.Code == errors.ECONFLICT {
@@ -34,14 +38,13 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 		}
 		errorReturn(w, r, 500, errC.Error())
 	}
-	fmt.Println(token)
-	status = 200
-	response = token
-	fmt.Println(response)
+	status = 201
+	response = newUser
 	w.WriteHeader(status)
 	w.Header().Set("Content-Type", "application/json")
 	_, err = w.Write(response)
 	if err != nil {
 		errorReturn(w, r, 500, err.Error())
 	}
+
 }

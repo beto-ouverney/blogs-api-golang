@@ -19,6 +19,7 @@ func CreateToken(displayName string, email string, image string) (string, *error
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	tokenString, err := token.SignedString([]byte(config.JWT_SECRET))
+
 	if err != nil {
 		return "", &errors.CustomError{Code: errors.EINTERNAL, Op: "tokenjwt.CreateToken", Err: err}
 	}
