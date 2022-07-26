@@ -10,7 +10,9 @@ import (
 
 func main() {
 	router := &myrouter.Router{}
-	router.Route(http.MethodPost, `/login`, []myrouter.Middleware{middleware.LoginFieldsValidate}, handler.LoginUser)
-	router.Route(http.MethodPost, `/user`, []myrouter.Middleware{middleware.AddUserFieldsValidate}, handler.AddUser)
+	router.Route(http.MethodPost, "/login", []myrouter.Middleware{middleware.LoginFieldsValidate}, handler.LoginUser)
+	router.Route(http.MethodPost, "/user", []myrouter.Middleware{middleware.AddUserFieldsValidate}, handler.AddUser)
+	router.Route(http.MethodGet, "/user", []myrouter.Middleware{middleware.VerifyToken}, handler.GetAllUsers)
+	router.Route(http.MethodGet, `/user/(?P<id>\d+)`, []myrouter.Middleware{middleware.VerifyToken}, handler.GetByID)
 	http.ListenAndServe(":8080", router)
 }

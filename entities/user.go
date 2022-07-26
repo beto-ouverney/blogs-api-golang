@@ -14,6 +14,5 @@ type UserWithoutPassword struct {
 	ID          int    `db:"id" json:"id"`
 	DisplayName string `db:"displayName" json:"displayName"`
 	Email       string `db:"email" json:"email"`
-	Password    string `db:"password" json:"password"`
 	Image       string `db:"image" json:"image"`
 }

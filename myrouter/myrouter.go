@@ -78,7 +78,6 @@ func (rtr *Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		var status int
 		var message string
 		var body *json.Decoder
-
 		if r.Body != nil {
 			buf, _ := ioutil.ReadAll(r.Body)
 			bodyCopy1 := ioutil.NopCloser(bytes.NewBuffer(buf))

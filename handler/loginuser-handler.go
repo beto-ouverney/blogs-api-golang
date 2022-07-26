@@ -2,7 +2,6 @@ package handler
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/beto-ouverney/blogs-api-golang/controller/usercontroller"
@@ -29,7 +28,6 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 
 	if errC != nil {
 		if errC.Code != errors.ECONFLICT {
-			fmt.Println("error")
 			errorReturn(w, r, 500, errC.Error())
 		}
 		status = errors.ErrorResponse["invalidFields"].Status
@@ -44,4 +42,5 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		errorReturn(w, r, 500, err.Error())
 	}
+	return
 }

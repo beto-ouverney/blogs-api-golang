@@ -7,11 +7,10 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (u *UserRepository) AddUser(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError) {
-	newUser, err := u.Model.AddUser(ctx, user)
+func (u *UserRepository) GetByID(ctx context.Context, id int64) (*entities.UserWithoutPassword, *errors.CustomError) {
+	user, err := u.Model.GetByID(ctx, id)
 	if err != nil {
 		return nil, err
 	}
-	return newUser, nil
-
+	return user, nil
 }
