@@ -8,6 +8,7 @@ import (
 )
 
 func (u *UserRepository) AddUser(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError) {
+	
 	newUser, err := u.Model.AddUser(ctx, user)
 	if err != nil {
 		return nil, err

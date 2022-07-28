@@ -1,7 +1,6 @@
 package tokenjwt
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/beto-ouverney/blogs-api-golang/config"
@@ -39,7 +38,6 @@ func VerifyToken(token string) (bool, *errors.CustomError) {
 	}
 
 	if time.Unix(claims.ExpiresAt, 0).Sub(time.Now()) > config.TOKEN_TIME*time.Minute {
-		fmt.Println("VENCIDO")
 		return false, nil
 	}
 	return true, nil

@@ -16,6 +16,10 @@ var ErrorResponse = map[string]StatusMsgError{
 		Status:  404,
 		Message: "Post does not exist",
 	},
+	"categoryAlreadyExists": {
+		Status:  409,
+		Message: "Category already exists",
+	},
 	"categoryNotFound": {
 		Status:  400,
 		Message: `"categoryIds" not found`,

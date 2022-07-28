@@ -2,7 +2,6 @@ package usermodel
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/beto-ouverney/blogs-api-golang/entities"
 	"github.com/beto-ouverney/blogs-api-golang/errors"
@@ -27,7 +26,6 @@ func (model *modelSqlx) GetByEmail(ctx context.Context, email string) (*entities
 		if err.Error() == "sql: no rows in result set" {
 			return nil, nil
 		}
-		fmt.Println(err)
 		return nil, &errors.CustomError{Code: errors.EINTERNAL, Op: "usermodel.GetByEmail", Err: err}
 	}
 	return &user, nil
