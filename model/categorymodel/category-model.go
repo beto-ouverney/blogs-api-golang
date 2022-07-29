@@ -12,6 +12,7 @@ type ICategoryModel interface {
 	AddCategory(ctx context.Context, category *entities.Category) (*entities.Category, *errors.CustomError)
 	GetAllCategories(ctx context.Context) (*[]entities.Category, *errors.CustomError)
 	GetByNameCategory(ctx context.Context, name string) (*entities.Category, *errors.CustomError)
+	GetByID(ctx context.Context, id int64) (*entities.Category, *errors.CustomError)
 }
 
 type modelSqlx struct {

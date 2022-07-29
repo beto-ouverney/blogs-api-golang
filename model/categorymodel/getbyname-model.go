@@ -11,6 +11,9 @@ func (c *modelSqlx) GetByNameCategory(ctx context.Context, name string) (*entiti
 	var category entities.Category
 	err := c.sqlx.GetContext(ctx, &category, "SELECT id,name FROM Categories WHERE name = ?", name)
 	if err != nil {
+		if err.Error() == "sql: no rows in result set" {
+			return nil, nil
+		}
 		return nil, &errors.CustomError{Code: errors.EINTERNAL, Op: "categorymodel.GetByNameCategory", Err: err}
 	}
 	return &category, nil
