@@ -20,6 +20,8 @@ func GetAllBlogPosts(w http.ResponseWriter, r *http.Request) {
 		}
 		status = 400
 		response = []byte("{\"message\":\"" + err.Message + "\"}")
+	} else {
+		status = 200
 	}
 
 	w.WriteHeader(status)

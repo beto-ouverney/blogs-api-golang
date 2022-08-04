@@ -9,7 +9,7 @@ import (
 
 func (m *modelSqlx) GetAllBlogPosts(ctx context.Context) (*[]entities.BlogPostResponse, *errors.CustomError) {
 	var blogPosts []entities.BlogPostResponse
-	err := m.sqlx.SelectContext(ctx, &blogPosts, `SELECT BlogPosts.id, BlogPosts.title, BlogPosts.content, BlogPosts.published, BlogPosts.updated, user.id AS "user.id", user.displayName AS "user.displayName", user.email AS "user.email", user.image AS "user.image" FROM BlogPosts INNER JOIN Users AS user ON user.id = userId INNER JOIN PostCategories ON PostCategories.postId = BlogPosts.id INNER JOIN Categories as categories ON categories.id = PostCategories.categoryId`)
+	err := m.sqlx.SelectContext(ctx, &blogPosts, `SELECT BlogPosts.id, BlogPosts.title, BlogPosts.content, BlogPosts.published, BlogPosts.updated, user.id AS "user.id", user.displayName AS "user.displayName", user.email AS "user.email", user.image AS "user.image" FROM BlogPosts INNER JOIN Users AS user ON user.id = userId`)
 	if err != nil {
 		return nil, &errors.CustomError{Code: errors.EINTERNAL, Op: "blogpostmodel.GetAllBlogPosts", Err: err}
 	}

@@ -14,6 +14,7 @@ func GetAllUsers(w http.ResponseWriter, r *http.Request) {
 	controller := usercontroller.New()
 	users, err := controller.GetAllUsers(r.Context())
 	if err == nil {
+		status = 200
 		response = users
 	} else {
 		if err.Code != errors.ECONFLICT {

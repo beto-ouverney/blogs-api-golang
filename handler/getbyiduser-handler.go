@@ -19,6 +19,7 @@ func GetByID(w http.ResponseWriter, r *http.Request) {
 	}
 	user, err := controller.GetByID(r.Context(), id)
 	if err == nil {
+		status = 200
 		response = user
 	} else {
 		if err.Code != errors.ECONFLICT {
