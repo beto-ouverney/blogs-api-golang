@@ -10,6 +10,7 @@ import (
 
 type IBlogPostController interface {
 	AddBlogPost(ctx context.Context, token string, blogPost *entities.BlogPost) ([]byte, *errors.CustomError)
+	GetAllBlogPosts(ctx context.Context) ([]byte, *errors.CustomError)
 }
 
 type BlogPostController struct {

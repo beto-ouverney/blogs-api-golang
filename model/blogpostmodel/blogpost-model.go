@@ -10,6 +10,7 @@ import (
 
 type IBlogPostModel interface {
 	AddBlogPost(ctx context.Context, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError)
+	GetAllBlogPosts(ctx context.Context) (*[]entities.BlogPostResponse, *errors.CustomError)
 }
 
 type modelSqlx struct {
