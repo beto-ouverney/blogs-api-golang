@@ -13,6 +13,7 @@ type IBlogPostController interface {
 	GetAllBlogPosts(ctx context.Context) ([]byte, *errors.CustomError)
 	GetByIDBlogPosts(ctx context.Context, id int64) ([]byte, *errors.CustomError)
 	UpdateBlogPost(ctx context.Context, id int64, token string, title string, content string) ([]byte, *errors.CustomError)
+	Delete(ctx context.Context, id int64, token string) *errors.CustomError
 }
 
 type BlogPostController struct {

@@ -20,5 +20,6 @@ func main() {
 	router.Route(http.MethodPut, `/post/(?P<id>\d+)`, []myrouter.Middleware{middleware.VerifyToken}, handler.UpdateBlogPost)
 	router.Route(http.MethodGet, `/post/(?P<id>\d+)`, []myrouter.Middleware{middleware.VerifyToken}, handler.GetByIDBlogPost)
 	router.Route(http.MethodGet, "/post", []myrouter.Middleware{middleware.VerifyToken}, handler.GetAllBlogPosts)
+	router.Route(http.MethodDelete, `/post/(?P<id>\d+)`, []myrouter.Middleware{middleware.VerifyToken}, handler.DeleteBlogPost)
 	http.ListenAndServe(":8080", router)
 }

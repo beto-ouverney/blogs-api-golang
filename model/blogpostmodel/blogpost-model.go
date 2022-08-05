@@ -13,6 +13,7 @@ type IBlogPostModel interface {
 	GetAllBlogPosts(ctx context.Context) (*[]entities.BlogPostResponse, *errors.CustomError)
 	GetByID(ctx context.Context, id int64) (*entities.BlogPostResponse, *errors.CustomError)
 	Update(ctx context.Context, blogPost *entities.BlogPost) *errors.CustomError
+	Delete(ctx context.Context, id int64) *errors.CustomError
 }
 
 type modelSqlx struct {
