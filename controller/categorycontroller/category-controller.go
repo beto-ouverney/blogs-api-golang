@@ -8,8 +8,8 @@ import (
 )
 
 type ICategoryController interface {
-	GetAllCategories(ctx context.Context) ([]byte, *errors.CustomError)
-	AddCategory(ctx context.Context, name string) ([]byte, *errors.CustomError)
+	GetAll(ctx context.Context) ([]byte, *errors.CustomError)
+	Add(ctx context.Context, name string) ([]byte, *errors.CustomError)
 }
 
 type CategoryController struct {

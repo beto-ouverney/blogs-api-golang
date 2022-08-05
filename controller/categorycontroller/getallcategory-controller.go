@@ -7,8 +7,8 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (c *CategoryController) GetAllCategories(ctx context.Context) ([]byte, *errors.CustomError) {
-	categories, err := c.UseCase.GetAllCategories(ctx)
+func (c *CategoryController) GetAll(ctx context.Context) ([]byte, *errors.CustomError) {
+	categories, err := c.UseCase.GetAll(ctx)
 	if err != nil {
 		return nil, err
 	}

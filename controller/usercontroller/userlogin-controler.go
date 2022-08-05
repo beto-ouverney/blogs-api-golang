@@ -8,8 +8,8 @@ import (
 )
 
 //UserLogin is a controller responsible for transform token string in Json
-func (c *UserController) LoginUser(ctx context.Context, email, password string) (tokenJson []byte, err *errors.CustomError) {
-	token, err := c.UseCase.LoginUser(ctx, email, password)
+func (c *UserController) Login(ctx context.Context, email, password string) (tokenJson []byte, err *errors.CustomError) {
+	token, err := c.UseCase.Login(ctx, email, password)
 	if err == nil {
 		data := struct {
 			Token string `json:"token"`

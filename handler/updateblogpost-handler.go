@@ -32,7 +32,7 @@ func UpdateBlogPost(w http.ResponseWriter, r *http.Request) {
 	token := r.Header.Get("Authorization")
 
 	controller := blogpostcontroller.New()
-	response, err := controller.UpdateBlogPost(r.Context(), id, token, data.Title, data.Content)
+	response, err := controller.Update(r.Context(), id, token, data.Title, data.Content)
 	if err == nil {
 		status = 200
 	} else if err.Code == errors.ECONFLICT {

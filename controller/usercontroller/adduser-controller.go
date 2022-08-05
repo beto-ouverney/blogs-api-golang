@@ -8,7 +8,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (c *UserController) AddUser(ctx context.Context, dysplayName, email, password, image string) (talkerJson []byte, err *errors.CustomError) {
+func (c *UserController) Add(ctx context.Context, dysplayName, email, password, image string) (talkerJson []byte, err *errors.CustomError) {
 
 	user := &entities.User{
 		DisplayName: dysplayName,
@@ -17,7 +17,7 @@ func (c *UserController) AddUser(ctx context.Context, dysplayName, email, passwo
 		Image:       image,
 	}
 
-	newUser, err := c.UseCase.AddUser(ctx, user)
+	newUser, err := c.UseCase.Add(ctx, user)
 	if err != nil {
 		return nil, err
 	}

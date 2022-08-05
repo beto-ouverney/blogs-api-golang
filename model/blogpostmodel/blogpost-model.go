@@ -9,8 +9,8 @@ import (
 )
 
 type IBlogPostModel interface {
-	AddBlogPost(ctx context.Context, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError)
-	GetAllBlogPosts(ctx context.Context) (*[]entities.BlogPostResponse, *errors.CustomError)
+	Add(ctx context.Context, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError)
+	GetAll(ctx context.Context) (*[]entities.BlogPostResponse, *errors.CustomError)
 	GetByID(ctx context.Context, id int64) (*entities.BlogPostResponse, *errors.CustomError)
 	Update(ctx context.Context, blogPost *entities.BlogPost) *errors.CustomError
 	Delete(ctx context.Context, id int64) *errors.CustomError

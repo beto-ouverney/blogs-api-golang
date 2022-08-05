@@ -8,10 +8,10 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (c *CategoryController) AddCategory(ctx context.Context, name string) ([]byte, *errors.CustomError) {
+func (c *CategoryController) Add(ctx context.Context, name string) ([]byte, *errors.CustomError) {
 
 	category := &entities.Category{Name: name}
-	newCategory, err := c.UseCase.AddCategory(ctx, category)
+	newCategory, err := c.UseCase.Add(ctx, category)
 	if err != nil {
 		return nil, err
 	}

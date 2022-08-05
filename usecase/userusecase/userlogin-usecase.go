@@ -7,7 +7,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/helper/tokenjwt"
 )
 
-func (u *UserUseCase) LoginUser(ctx context.Context, email, password string) (string, *errors.CustomError) {
+func (u *UserUseCase) Login(ctx context.Context, email, password string) (string, *errors.CustomError) {
 
 	user, err := u.Repo.GetByEmail(ctx, email)
 	if err != nil {

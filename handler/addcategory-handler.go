@@ -22,7 +22,7 @@ func AddCategory(w http.ResponseWriter, r *http.Request) {
 	}
 
 	controller := categorycontroller.New()
-	newCategory, err := controller.AddCategory(r.Context(), data.Name)
+	newCategory, err := controller.Add(r.Context(), data.Name)
 	if err != nil {
 		if err.Code != errors.ECONFLICT {
 			errorReturn(w, r, 500, err.Error())

@@ -29,7 +29,7 @@ func AddUser(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	controller := usercontroller.New()
 
-	newUser, errC := controller.AddUser(r.Context(), data.DisplayName, data.Email, data.Password, data.Image)
+	newUser, errC := controller.Add(r.Context(), data.DisplayName, data.Email, data.Password, data.Image)
 
 	if errC != nil {
 		if errC.Code != errors.ECONFLICT {

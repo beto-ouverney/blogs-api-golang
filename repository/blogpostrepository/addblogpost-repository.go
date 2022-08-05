@@ -7,9 +7,9 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (r *BlogPostRepository) AddBlogPost(ctx context.Context, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError) {
+func (r *BlogPostRepository) Add(ctx context.Context, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError) {
 
-	newBlogPost, err := r.Model.AddBlogPost(ctx, blogPost)
+	newBlogPost, err := r.Model.Add(ctx, blogPost)
 
 	if err != nil {
 		return nil, err

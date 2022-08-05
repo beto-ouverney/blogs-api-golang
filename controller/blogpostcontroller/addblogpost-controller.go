@@ -9,14 +9,14 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (c *BlogPostController) AddBlogPost(ctx context.Context, token string, title string, content string, categoryIds []int64) ([]byte, *errors.CustomError) {
+func (c *BlogPostController) Add(ctx context.Context, token string, title string, content string, categoryIds []int64) ([]byte, *errors.CustomError) {
 	blogPost := &entities.BlogPost{
 		Title:       title,
 		Content:     content,
 		CategoryIDs: categoryIds,
 	}
 
-	newBlogPost, err := c.UseCase.AddBlogPost(ctx, token, blogPost)
+	newBlogPost, err := c.UseCase.Add(ctx, token, blogPost)
 
 	if err != nil {
 		return nil, err

@@ -12,7 +12,7 @@ func GetAllUsers(w http.ResponseWriter, r *http.Request) {
 	response := []byte("{\"message\":\"Error\"}")
 
 	controller := usercontroller.New()
-	users, err := controller.GetAllUsers(r.Context())
+	users, err := controller.GetAll(r.Context())
 	if err == nil {
 		status = 200
 		response = users

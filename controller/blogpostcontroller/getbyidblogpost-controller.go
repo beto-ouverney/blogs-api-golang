@@ -7,7 +7,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (c *BlogPostController) GetByIDBlogPost(ctx context.Context, id int64) ([]byte, *errors.CustomError) {
+func (c *BlogPostController) GetByID(ctx context.Context, id int64) ([]byte, *errors.CustomError) {
 	blogPost, err := c.UseCase.GetByID(ctx, id)
 	if err != nil {
 		return nil, err

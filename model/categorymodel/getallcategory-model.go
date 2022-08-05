@@ -7,7 +7,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (model *modelSqlx) GetAllCategories(ctx context.Context) (*[]entities.Category, *errors.CustomError) {
+func (model *modelSqlx) GetAll(ctx context.Context) (*[]entities.Category, *errors.CustomError) {
 
 	var categories []entities.Category
 

@@ -24,7 +24,7 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 
 	defer r.Body.Close()
 	controller := usercontroller.New()
-	token, errC := controller.LoginUser(r.Context(), data.Email, data.Password)
+	token, errC := controller.Login(r.Context(), data.Email, data.Password)
 
 	if errC != nil {
 		if errC.Code != errors.ECONFLICT {

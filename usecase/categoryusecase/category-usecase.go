@@ -9,8 +9,8 @@ import (
 )
 
 type ICategoryUseCase interface {
-	GetAllCategories(ctx context.Context) (*[]entities.Category, *errors.CustomError)
-	AddCategory(ctx context.Context, category *entities.Category) (*entities.Category, *errors.CustomError)
+	GetAll(ctx context.Context) (*[]entities.Category, *errors.CustomError)
+	Add(ctx context.Context, category *entities.Category) (*entities.Category, *errors.CustomError)
 }
 
 type CategoryUseCase struct {

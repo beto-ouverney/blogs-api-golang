@@ -7,8 +7,8 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (c *UserController) GetAllUsers(ctx context.Context) ([]byte, *errors.CustomError) {
-	users, err := c.UseCase.GetAllUsers(ctx)
+func (c *UserController) GetAll(ctx context.Context) ([]byte, *errors.CustomError) {
+	users, err := c.UseCase.GetAll(ctx)
 	if err != nil {
 		return nil, err
 	}

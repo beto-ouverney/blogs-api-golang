@@ -9,10 +9,10 @@ import (
 )
 
 type IBlogPostController interface {
-	AddBlogPost(ctx context.Context, token string, blogPost *entities.BlogPost) ([]byte, *errors.CustomError)
-	GetAllBlogPosts(ctx context.Context) ([]byte, *errors.CustomError)
-	GetByIDBlogPosts(ctx context.Context, id int64) ([]byte, *errors.CustomError)
-	UpdateBlogPost(ctx context.Context, id int64, token string, title string, content string) ([]byte, *errors.CustomError)
+	Add(ctx context.Context, token string, blogPost *entities.BlogPost) ([]byte, *errors.CustomError)
+	GetAll(ctx context.Context) ([]byte, *errors.CustomError)
+	GetByID(ctx context.Context, id int64) ([]byte, *errors.CustomError)
+	Update(ctx context.Context, id int64, token string, title string, content string) ([]byte, *errors.CustomError)
 	Delete(ctx context.Context, id int64, token string) *errors.CustomError
 }
 

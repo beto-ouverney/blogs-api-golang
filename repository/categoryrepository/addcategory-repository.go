@@ -7,9 +7,9 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (c *CategoryRepository) AddCategory(ctx context.Context, category *entities.Category) (*entities.Category, *errors.CustomError) {
+func (c *CategoryRepository) Add(ctx context.Context, category *entities.Category) (*entities.Category, *errors.CustomError) {
 
-	newCategory, err := c.Model.AddCategory(ctx, category)
+	newCategory, err := c.Model.Add(ctx, category)
 
 	if err != nil {
 		return nil, err

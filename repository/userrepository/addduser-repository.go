@@ -7,9 +7,9 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (u *UserRepository) AddUser(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError) {
+func (u *UserRepository) Add(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError) {
 	
-	newUser, err := u.Model.AddUser(ctx, user)
+	newUser, err := u.Model.Add(ctx, user)
 	if err != nil {
 		return nil, err
 	}

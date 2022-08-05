@@ -10,9 +10,9 @@ import (
 
 //UserInterface is the interface for the user usecase
 type IUserUseCase interface {
-	LoginUser(ctx context.Context, email, password string) (string, *errors.CustomError)
-	AddUser(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError)
-	GetAllUsers(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError)
+	Login(ctx context.Context, email, password string) (string, *errors.CustomError)
+	Add(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError)
+	GetAll(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError)
 	GetByID(ctx context.Context, id int64) (*entities.UserWithoutPassword, *errors.CustomError)
 }
 

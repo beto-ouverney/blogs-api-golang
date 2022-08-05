@@ -7,7 +7,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (c BlogPostController) UpdateBlogPost(ctx context.Context, id int64, token string, title string, content string) ([]byte, *errors.CustomError) {
+func (c BlogPostController) Update(ctx context.Context, id int64, token string, title string, content string) ([]byte, *errors.CustomError) {
 	newBlogPost, err := c.UseCase.Update(ctx, id, token, title, content)
 	if err != nil {
 		return nil, err

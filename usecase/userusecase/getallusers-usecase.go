@@ -7,6 +7,6 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (u *UserUseCase) GetAllUsers(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError) {
-	return u.Repo.GetAllUsers(ctx)
+func (u *UserUseCase) GetAll(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError) {
+	return u.Repo.GetAll(ctx)
 }

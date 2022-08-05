@@ -26,7 +26,7 @@ func AddBlogPost(w http.ResponseWriter, r *http.Request) {
 	}
 
 	controller := blogpostcontroller.New()
-	newBlogPost, errC := controller.AddBlogPost(r.Context(), token, data.Title, data.Content, data.CategoryIDs)
+	newBlogPost, errC := controller.Add(r.Context(), token, data.Title, data.Content, data.CategoryIDs)
 
 	if errC != nil {
 		if errC.Code != errors.ECONFLICT {

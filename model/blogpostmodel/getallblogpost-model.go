@@ -7,7 +7,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (m *modelSqlx) GetAllBlogPosts(ctx context.Context) (*[]entities.BlogPostResponse, *errors.CustomError) {
+func (m *modelSqlx) GetAll(ctx context.Context) (*[]entities.BlogPostResponse, *errors.CustomError) {
 	var blogPosts []entities.BlogPostResponse
 	err := m.sqlx.SelectContext(ctx, &blogPosts, `SELECT BlogPosts.id, BlogPosts.title, BlogPosts.content, BlogPosts.userId, BlogPosts.published, BlogPosts.updated, user.id AS "user.id", user.displayName AS "user.displayName", user.email AS "user.email", user.image AS "user.image" FROM BlogPosts INNER JOIN Users AS user ON user.id = userId`)
 	if err != nil {

@@ -7,8 +7,8 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (u *CategoryUseCase) GetAllCategories(ctx context.Context) (*[]entities.Category, *errors.CustomError) {
-	categories, err := u.Repo.GetAllCategories(ctx)
+func (u *CategoryUseCase) GetAll(ctx context.Context) (*[]entities.Category, *errors.CustomError) {
+	categories, err := u.Repo.GetAll(ctx)
 	if err == nil {
 		return categories, nil
 	}

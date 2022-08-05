@@ -7,8 +7,8 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (c *BlogPostController) GetAllBlogPosts(ctx context.Context) ([]byte, *errors.CustomError) {
-	blogPosts, err := c.UseCase.GetAllBlogPosts(ctx)
+func (c *BlogPostController) GetAll(ctx context.Context) ([]byte, *errors.CustomError) {
+	blogPosts, err := c.UseCase.GetAll(ctx)
 	if err != nil {
 		return nil, err
 	}

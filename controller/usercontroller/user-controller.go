@@ -8,9 +8,9 @@ import (
 )
 
 type IUserController interface {
-	LoginUser(ctx context.Context, email, password string) ([]byte, *errors.CustomError)
-	AddUser(ctx context.Context, dysplayName, email, password, image string) ([]byte, *errors.CustomError)
-	GetAllUsers(ctx context.Context) ([]byte, *errors.CustomError)
+	Login(ctx context.Context, email, password string) ([]byte, *errors.CustomError)
+	Add(ctx context.Context, dysplayName, email, password, image string) ([]byte, *errors.CustomError)
+	GetAll(ctx context.Context) ([]byte, *errors.CustomError)
 	GetByID(ctx context.Context, id int64) ([]byte, *errors.CustomError)
 }
 

@@ -8,7 +8,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/helper/tokenjwt"
 )
 
-func (u *BlogPostUseCase) AddBlogPost(ctx context.Context, token string, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError) {
+func (u *BlogPostUseCase) Add(ctx context.Context, token string, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError) {
 	errF := verifyFields(blogPost.Title, blogPost.Content)
 	if errF != nil {
 		return nil, errF
@@ -34,7 +34,7 @@ func (u *BlogPostUseCase) AddBlogPost(ctx context.Context, token string, blogPos
 	}
 	blogPost.UserID = user.ID
 
-	newBlogPost, err := u.RepoBlogPost.AddBlogPost(ctx, blogPost)
+	newBlogPost, err := u.RepoBlogPost.Add(ctx, blogPost)
 
 	if err != nil {
 		return nil, err

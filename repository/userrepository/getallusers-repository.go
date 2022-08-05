@@ -7,6 +7,6 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (u *UserRepository) GetAllUsers(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError) {
-	return u.Model.GetAllUsers(ctx)
+func (u *UserRepository) GetAll(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError) {
+	return u.Model.GetAll(ctx)
 }

@@ -17,7 +17,7 @@ func GetByIDBlogPost(w http.ResponseWriter, r *http.Request) {
 		errorReturn(w, r, 500, errP.Error())
 	}
 	controller := blogpostcontroller.New()
-	blogPost, err := controller.GetByIDBlogPost(r.Context(), id)
+	blogPost, err := controller.GetByID(r.Context(), id)
 	if err == nil {
 		status = 200
 		response = blogPost

@@ -7,7 +7,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (model *modelSqlx) AddUser(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError) {
+func (model *modelSqlx) Add(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError) {
 
 	result, err := model.sqlx.ExecContext(ctx, `
 		INSERT INTO Users (

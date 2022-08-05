@@ -12,7 +12,7 @@ func GetAllCategories(w http.ResponseWriter, r *http.Request) {
 	response := []byte("{\"message\":\"Error\"}")
 
 	controller := categorycontroller.New()
-	categories, err := controller.GetAllCategories(r.Context())
+	categories, err := controller.GetAll(r.Context())
 	if err == nil {
 		status = 200
 		response = categories

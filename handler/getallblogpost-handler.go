@@ -13,7 +13,7 @@ func GetAllBlogPosts(w http.ResponseWriter, r *http.Request) {
 
 	controller := blogpostcontroller.New()
 
-	response, err := controller.GetAllBlogPosts(r.Context())
+	response, err := controller.GetAll(r.Context())
 	if err != nil {
 		if err.Code != errors.ECONFLICT {
 			errorReturn(w, r, 500, err.Error())

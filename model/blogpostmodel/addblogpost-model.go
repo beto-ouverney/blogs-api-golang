@@ -8,7 +8,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (model *modelSqlx) AddBlogPost(ctx context.Context, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError) {
+func (model *modelSqlx) Add(ctx context.Context, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError) {
 	tran, err := model.sqlx.BeginTx(ctx, nil)
 	if err != nil {
 		return nil, &errors.CustomError{Code: errors.EINTERNAL, Op: "blogpostmodel.AddBlogPost", Err: err}

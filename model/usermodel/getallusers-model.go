@@ -7,7 +7,7 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/errors"
 )
 
-func (model *modelSqlx) GetAllUsers(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError) {
+func (model *modelSqlx) GetAll(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError) {
 	var users []entities.UserWithoutPassword
 
 	err := model.sqlx.SelectContext(ctx, &users, "SELECT id, displayName, email, image FROM Users")
