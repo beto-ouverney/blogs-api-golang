@@ -14,6 +14,7 @@ type IBlogPostUseCase interface {
 	AddBlogPost(ctx context.Context, token string, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError)
 	GetAllBlogPosts(ctx context.Context) (*[]entities.BlogPostResponse, *errors.CustomError)
 	GetByID(ctx context.Context, id int64) (*entities.BlogPostResponse, *errors.CustomError)
+	Update(ctx context.Context, id int64, token string, title, content string) (*entities.BlogPostResponse, *errors.CustomError)
 }
 
 type BlogPostUseCase struct {

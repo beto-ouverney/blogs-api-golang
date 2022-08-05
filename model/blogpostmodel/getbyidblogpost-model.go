@@ -9,7 +9,7 @@ import (
 
 func (m *modelSqlx) GetByID(ctx context.Context, id int64) (*entities.BlogPostResponse, *errors.CustomError) {
 	var blogPost entities.BlogPostResponse
-	err := m.sqlx.GetContext(ctx, &blogPost, `SELECT BlogPosts.id, BlogPosts.title, BlogPosts.content, BlogPosts.published, BlogPosts.updated, user.id AS "user.id", user.displayName AS "user.displayName", user.email AS "user.email", user.image AS "user.image" FROM BlogPosts INNER JOIN Users AS user ON user.id = userId WHERE BlogPosts.id = ?`, id)
+	err := m.sqlx.GetContext(ctx, &blogPost, `SELECT BlogPosts.id, BlogPosts.title, BlogPosts.content, BlogPosts.published, BlogPosts.updated, BlogPosts.userId, user.id AS "user.id", user.displayName AS "user.displayName", user.email AS "user.email", user.image AS "user.image" FROM BlogPosts INNER JOIN Users AS user ON user.id = userId WHERE BlogPosts.id = ?`, id)
 	if err != nil {
 		if err.Error() == "sql: no rows in result set" {
 			return nil, nil

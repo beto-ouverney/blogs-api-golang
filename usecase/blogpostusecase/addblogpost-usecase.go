@@ -8,19 +8,8 @@ import (
 	"github.com/beto-ouverney/blogs-api-golang/helper/tokenjwt"
 )
 
-func verifyFields(blogPost *entities.BlogPost) *errors.CustomError {
-	if blogPost.Title == "" {
-		return &errors.CustomError{Code: errors.ECONFLICT, Op: "blogpostblogpost.AddBlogPost", Message: errors.ErrorResponse["missingFields"].Message}
-	}
-	if blogPost.Content == "" {
-		return &errors.CustomError{Code: errors.ECONFLICT, Op: "blogpostblogpost.AddBlogPost", Message: errors.ErrorResponse["missingFields"].Message}
-	}
-
-	return nil
-}
-
 func (u *BlogPostUseCase) AddBlogPost(ctx context.Context, token string, blogPost *entities.BlogPost) (*entities.BlogPost, *errors.CustomError) {
-	errF := verifyFields(blogPost)
+	errF := verifyFields(blogPost.Title, blogPost.Content)
 	if errF != nil {
 		return nil, errF
 	}

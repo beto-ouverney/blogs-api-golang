@@ -9,7 +9,7 @@ import (
 
 func (m *modelSqlx) GetByID(ctx context.Context, id int64) (*entities.Category, *errors.CustomError) {
 	var category entities.Category
-	err := m.sqlx.GetContext(ctx, &category, "SELECT id,name FROM Categories WHERE id = ?", id)
+	err := m.sqlx.GetContext(ctx, &category, `SELECT id AS "categories.id",name AS "categories.name" FROM Categories WHERE id = ?`, id)
 	if err != nil {
 		if err.Error() == "sql: no rows in result set" {
 			return nil, nil

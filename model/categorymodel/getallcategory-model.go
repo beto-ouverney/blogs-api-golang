@@ -11,7 +11,7 @@ func (model *modelSqlx) GetAllCategories(ctx context.Context) (*[]entities.Categ
 
 	var categories []entities.Category
 
-	err := model.sqlx.SelectContext(ctx, &categories, "SELECT id,name FROM Categories")
+	err := model.sqlx.SelectContext(ctx, &categories, `SELECT id AS "categories.id",name AS "categories.name"  FROM Categories`)
 	if err != nil {
 		return nil, &errors.CustomError{Code: errors.EINTERNAL, Op: "categorymodel.GetAllCategories", Err: err}
 	}

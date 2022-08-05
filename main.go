@@ -17,6 +17,7 @@ func main() {
 	router.Route(http.MethodGet, "/categories", []myrouter.Middleware{middleware.VerifyToken}, handler.GetAllCategories)
 	router.Route(http.MethodPost, "/categories", []myrouter.Middleware{middleware.VerifyToken}, handler.AddCategory)
 	router.Route(http.MethodPost, "/post", []myrouter.Middleware{middleware.VerifyToken}, handler.AddBlogPost)
+	router.Route(http.MethodPut, `/post/(?P<id>\d+)`, []myrouter.Middleware{middleware.VerifyToken}, handler.UpdateBlogPost)
 	router.Route(http.MethodGet, `/post/(?P<id>\d+)`, []myrouter.Middleware{middleware.VerifyToken}, handler.GetByIDBlogPost)
 	router.Route(http.MethodGet, "/post", []myrouter.Middleware{middleware.VerifyToken}, handler.GetAllBlogPosts)
 	http.ListenAndServe(":8080", router)
