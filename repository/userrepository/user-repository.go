@@ -15,6 +15,7 @@ type IUserRepository interface {
 	Add(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError)
 	GetAll(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError)
 	GetByID(ctx context.Context, id int64) (*entities.UserWithoutPassword, *errors.CustomError)
+	Delete(ctx context.Context, id int64) *errors.CustomError
 }
 
 type UserRepository struct {

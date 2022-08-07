@@ -12,6 +12,7 @@ type IUserController interface {
 	Add(ctx context.Context, dysplayName, email, password, image string) ([]byte, *errors.CustomError)
 	GetAll(ctx context.Context) ([]byte, *errors.CustomError)
 	GetByID(ctx context.Context, id int64) ([]byte, *errors.CustomError)
+	Delete(ctx context.Context, token string) *errors.CustomError
 }
 
 type UserController struct {

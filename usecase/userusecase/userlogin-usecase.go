@@ -13,7 +13,6 @@ func (u *UserUseCase) Login(ctx context.Context, email, password string) (string
 	if err != nil {
 		return "", err
 	}
-
 	if user == nil {
 		return "", &errors.CustomError{Code: errors.ECONFLICT, Op: "userusecase.GetByEmail"}
 	}

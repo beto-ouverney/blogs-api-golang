@@ -14,6 +14,7 @@ type IUserUseCase interface {
 	Add(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError)
 	GetAll(ctx context.Context) ([]entities.UserWithoutPassword, *errors.CustomError)
 	GetByID(ctx context.Context, id int64) (*entities.UserWithoutPassword, *errors.CustomError)
+	Delete(ctx context.Context, token string) *errors.CustomError
 }
 
 //UserUseCase is the implementation of the user usecase

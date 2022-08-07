@@ -16,7 +16,6 @@ func LoginFieldsValidate(header map[string][]string, decoder *json.Decoder) (ok 
 	if err != nil {
 		return false, 400, "Invalid request"
 	}
-
 	if fields.Email == "" || fields.Password == "" {
 		return false, errors.ErrorResponse["invalidFields"].Status, errors.ErrorResponse["invalidFields"].Message
 	}
