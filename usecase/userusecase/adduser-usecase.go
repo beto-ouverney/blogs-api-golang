@@ -8,12 +8,12 @@ import (
 )
 
 func (u *UserUseCase) Add(ctx context.Context, user *entities.User) (*entities.User, *errors.CustomError) {
-	user, err := u.Repo.GetByEmail(ctx, user.Email)
+	userExist, err := u.Repo.GetByEmail(ctx, user.Email)
 	if err != nil {
 		return nil, err
 	}
 
-	if user != nil {
+	if userExist != nil {
 		return nil, &errors.CustomError{Code: errors.ECONFLICT, Op: "userusecase.GetByEmail"}
 	}
 	newUser, err := u.Repo.Add(ctx, user)

@@ -14,6 +14,7 @@ type IBlogPostController interface {
 	GetByID(ctx context.Context, id int64) ([]byte, *errors.CustomError)
 	Update(ctx context.Context, id int64, token string, title string, content string) ([]byte, *errors.CustomError)
 	Delete(ctx context.Context, id int64, token string) *errors.CustomError
+	Search(ctx context.Context, search string) ([]byte, *errors.CustomError)
 }
 
 type BlogPostController struct {
