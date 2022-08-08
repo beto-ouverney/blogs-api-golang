@@ -61,7 +61,6 @@ func main() {
 		fmt.Printf("Creating schema %d\n", i)
 		_, err = conn.Exec(s)
 		if err != nil {
-			fmt.Println(s)
 			panic(err)
 		}
 	}

@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"regexp"
 )
@@ -62,6 +63,12 @@ func (rtr *Router) Route(method, path string, middlewares []Middleware, handlerF
 
 //ServerHTTP is a function that returns the handler for the router
 func (rtr *Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	defer func() {
+		if r := recover(); r != nil {
+			log.Println("ERROR:", r) // Log the error
+			http.Error(w, "{\"message\": Internal Server Error }", http.StatusInternalServerError)
+		}
+	}()
 	for _, e := range rtr.routes {
 		params := e.Match(r)
 		if params == nil {
@@ -71,12 +78,10 @@ func (rtr *Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		var status int
 		var message string
 		var body *json.Decoder
-
 		if r.Body != nil {
 			buf, _ := ioutil.ReadAll(r.Body)
 			bodyCopy1 := ioutil.NopCloser(bytes.NewBuffer(buf))
 			bodyCopy2 := ioutil.NopCloser(bytes.NewBuffer(buf))
-
 			r.Body = bodyCopy1 // OK since bodyCopy1 implements the io.ReadCloser interface
 			body = json.NewDecoder(bodyCopy2)
 		}
