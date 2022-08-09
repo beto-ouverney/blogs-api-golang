@@ -33,7 +33,7 @@ Blogs API GO LANG with SOLID and Clean Architecture with MySql
      "email": "beto.ouverney@email.com",
      "password": "123456"
    }
- ```
+   ```
  -> The validation rules are:
 
     the email field is mandatory;
