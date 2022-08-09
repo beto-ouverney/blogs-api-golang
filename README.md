@@ -1,10 +1,10 @@
-# Blogs API GO LANG with MYSQL, JWT, SOLID and Clean Architecture #
+# Blogs API GO LANG with DOCKER, MYSQL, JWT, SOLID and Clean Architecture #
 
 Development of an API and DATABASE for a blog using JWT for security
 
 # Other Versions of this project with other languages #
 
-[Blogs API build with Node.Js, Sequelize, JWT and MSC Architecture Version](https://github.com/beto-ouverney/blogs-api-node-js)
+[Blogs API build with Node.Js, Docker, Sequelize, JWT and MSC Architecture Version](https://github.com/beto-ouverney/blogs-api-node-js)
 
 ## Table of contents
 
@@ -20,7 +20,7 @@ Development of an API and DATABASE for a blog using JWT for security
 
 ### The challenge
 
-Blogs API GO LANG with SOLID and Clean Architecture with MySql 
+Blogs API GO LANG with Docker, Sqlx, Mysql, SOLID and Clean Architecture
 
 **The users must be capable of**
 
