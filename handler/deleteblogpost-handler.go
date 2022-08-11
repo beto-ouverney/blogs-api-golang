@@ -9,6 +9,7 @@ import (
 )
 
 func DeleteBlogPost(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
 	id, errP := strconv.ParseInt(GetURLParam(r, "id"), 10, 64)
 	if errP != nil {
 		errorReturn(w, r, 500, errP.Error())

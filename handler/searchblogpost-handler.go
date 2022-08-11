@@ -8,6 +8,7 @@ import (
 
 func SearchBlogPost(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query().Get("q")
+	defer r.Body.Close()
 
 	controller := blogpostcontroller.New()
 	response, err := controller.Search(r.Context(), query)

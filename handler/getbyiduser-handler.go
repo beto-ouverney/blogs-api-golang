@@ -11,6 +11,7 @@ import (
 func GetByID(w http.ResponseWriter, r *http.Request) {
 	status := 500
 	response := []byte("{\"message\":\"Error\"}")
+	defer r.Body.Close()
 
 	controller := usercontroller.New()
 	id, errP := strconv.ParseInt(GetURLParam(r, "id"), 10, 64)

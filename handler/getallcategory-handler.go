@@ -10,7 +10,7 @@ import (
 func GetAllCategories(w http.ResponseWriter, r *http.Request) {
 	status := 500
 	response := []byte("{\"message\":\"Error\"}")
-
+	defer r.Body.Close()
 	controller := categorycontroller.New()
 	categories, err := controller.GetAll(r.Context())
 	if err == nil {

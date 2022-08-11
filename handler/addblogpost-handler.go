@@ -11,6 +11,7 @@ import (
 func AddBlogPost(w http.ResponseWriter, r *http.Request) {
 	status := 500
 	response := []byte("{\"message\":\"Error\"}")
+	defer r.Body.Close()
 
 	token := r.Header.Get("Authorization")
 

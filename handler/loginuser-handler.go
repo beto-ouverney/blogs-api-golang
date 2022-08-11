@@ -11,6 +11,7 @@ import (
 func LoginUser(w http.ResponseWriter, r *http.Request) {
 	status := 500
 	response := []byte("{\"message\":\"Error\"}")
+	defer r.Body.Close()
 
 	decoder := json.NewDecoder(r.Body)
 	data := struct {
