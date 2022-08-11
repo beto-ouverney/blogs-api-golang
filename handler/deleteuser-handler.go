@@ -8,7 +8,7 @@ import (
 )
 
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
-
+	defer r.Body.Close()
 	controller := usercontroller.New()
 
 	token := r.Header.Get("Authorization")
