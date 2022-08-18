@@ -9,7 +9,7 @@ import (
 
 func (c *modelSqlx) GetByName(ctx context.Context, name string) (*entities.Category, *errors.CustomError) {
 	var category entities.Category
-	err := c.sqlx.GetContext(ctx, &category, "SELECT id,name FROM Categories WHERE name = ?", name)
+	err := c.sqlx.GetContext(ctx, &category, `SELECT id AS "categories.id" , name AS "categories.name" FROM Categories WHERE name = ?`, name)
 	if err != nil {
 		if err.Error() == "sql: no rows in result set" {
 			return nil, nil
