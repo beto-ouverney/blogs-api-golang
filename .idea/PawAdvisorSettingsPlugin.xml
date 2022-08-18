@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="come.pawsql.plugin.SettingState">
+    <option name="dbHost" value="localhost" />
+    <option name="dbPort" value="3306" />
+    <option name="dedup" value="true" />
+    <option name="passwd" value="root" />
+    <option name="user" value="root" />
+  </component>
+</project>
